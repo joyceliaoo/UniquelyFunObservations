@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
-data = pd.read_csv("ufo_data/ufo_sqlite_1.csv")
+data = pd.read_csv("ufo_data/ufo_sqlite_working.csv")
 # print(data.describe())
 # print(len(data.index))
 
@@ -31,3 +32,29 @@ print("shapes distribution in U.K.\n", ufo_gb_shapes)
 ufo_ca_shapes = ufo_ca[ufo_ca['UFO_shape'] != "unknown"]
 ufo_ca_shapes = ufo_ca_shapes.groupby("UFO_shape").count()["city"].sort_values(ascending=False)
 print("shapes distribution in Canada\n", ufo_ca_shapes)
+
+data.latitude = pd.to_numeric(data.latitude, errors='coerce')
+data.longitude = pd.to_numeric(data.longitude, errors='coerce')
+data.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4, title="All Countries")
+plt.show()
+
+ufo_us_plot = ufo_us[ufo_us["latitude"] < 49]
+ufo_us_plot = ufo_us_plot[ufo_us_plot["longitude"] < -50]
+ufo_us_plot.latitude = pd.to_numeric(ufo_us_plot.latitude, errors='coerce')
+ufo_us_plot.longitude = pd.to_numeric(ufo_us_plot.longitude, errors='coerce')
+ufo_us_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.08, grid=True, title="UFO Sightings U.S.")
+plt.show()
+
+ufo_gb_plot = ufo_gb[ufo_gb["latitude"] > 20]
+ufo_gb_plot = ufo_gb_plot[ufo_gb_plot["longitude"] < 50]
+ufo_gb_plot.latitude = pd.to_numeric(ufo_gb_plot.latitude, errors='coerce')
+ufo_gb_plot.longitude = pd.to_numeric(ufo_gb_plot.longitude, errors='coerce')
+ufo_gb_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.5, grid=True, title="UFO Sightings U.K.")
+plt.show()
+
+ufo_ca_plot = ufo_ca[ufo_ca["latitude"] > 49]
+ufo_ca_plot = ufo_ca_plot[ufo_ca_plot["longitude"] < -50]
+ufo_ca_plot.latitude = pd.to_numeric(ufo_ca_plot.latitude, errors='coerce')
+ufo_ca_plot.longitude = pd.to_numeric(ufo_ca_plot.longitude, errors='coerce')
+ufo_ca_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.5, grid=True, title="UFO Sightings Canada")
+plt.show()
