@@ -47,26 +47,47 @@ def replace():
 # DELETE FROM ufo WHERE country IS NULL OR TRIM(country) = ''
 
 
-with open('ufo_sqlite_working.csv','r') as csvinput:
-    with open('ufo_dates.csv', 'w') as csvoutput:
+# with open('ufo_sqlite_working.csv','r') as csvinput:
+#     with open('ufo_dates.csv', 'w') as csvoutput:
+#         writer = csv.writer(csvoutput, lineterminator='\n')
+#         reader = csv.reader(csvinput)
+#
+#         all = []
+#         row = next(reader)
+#         row.append("mm/dd")
+#         row.append("time of day")
+#         row.append("month")
+#         all.append(row)
+#
+#         for row in reader:
+#             date_time = row[0].split(" ")
+#             date = date_time[0].split("/")
+#             new_date = date[0] + "/" + date[1]
+#             # print(new_date)
+#             row.append(new_date)
+#             row.append(date_time[1])
+#             row.append(date[0])
+#             all.append(row)
+#
+#         writer.writerows(all)
+
+with open('ufo_dates.csv','r') as csvinput:
+    with open('ufo_dates_clean.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput, lineterminator='\n')
         reader = csv.reader(csvinput)
 
         all = []
         row = next(reader)
-        row.append("mm/dd")
-        row.append("time of day")
-        row.append("month")
+        row.append("new mm/dd")
         all.append(row)
 
         for row in reader:
-            date_time = row[0].split(" ")
-            date = date_time[0].split("/")
+            date = row[8].split("/")
+            if int(date[1]) < 10:
+                date[1] = "0" + date[1]
             new_date = date[0] + "/" + date[1]
-            # print(new_date)
+            print(new_date)
             row.append(new_date)
-            row.append(date_time[1])
-            row.append(date[0])
             all.append(row)
 
         writer.writerows(all)

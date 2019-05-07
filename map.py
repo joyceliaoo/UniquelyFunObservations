@@ -45,8 +45,9 @@ ufo_us_plot.longitude = pd.to_numeric(ufo_us_plot.longitude, errors='coerce')
 ufo_us_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.08, grid=True, title="UFO Sightings U.S.")
 # plt.show()
 
-ufo_gb_plot = ufo_gb[ufo_gb["latitude"] > 20]
-ufo_gb_plot = ufo_gb_plot[ufo_gb_plot["longitude"] < 50]
+ufo_gb_plot = ufo_gb[ufo_gb["latitude"] > 45]
+ufo_gb_plot = ufo_gb_plot[ufo_gb_plot["longitude"] < 20]
+ufo_gb_plot = ufo_gb_plot[ufo_gb_plot["longitude"] > -50]
 ufo_gb_plot.latitude = pd.to_numeric(ufo_gb_plot.latitude, errors='coerce')
 ufo_gb_plot.longitude = pd.to_numeric(ufo_gb_plot.longitude, errors='coerce')
 ufo_gb_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.5, grid=True, title="UFO Sightings U.K.")
