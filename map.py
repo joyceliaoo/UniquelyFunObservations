@@ -36,21 +36,21 @@ print("shapes distribution in Canada\n", ufo_ca_shapes)
 data.latitude = pd.to_numeric(data.latitude, errors='coerce')
 data.longitude = pd.to_numeric(data.longitude, errors='coerce')
 data.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4, title="All Countries")
-plt.show()
+# plt.show()
 
 ufo_us_plot = ufo_us[ufo_us["latitude"] < 49]
 ufo_us_plot = ufo_us_plot[ufo_us_plot["longitude"] < -50]
 ufo_us_plot.latitude = pd.to_numeric(ufo_us_plot.latitude, errors='coerce')
 ufo_us_plot.longitude = pd.to_numeric(ufo_us_plot.longitude, errors='coerce')
 ufo_us_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.08, grid=True, title="UFO Sightings U.S.")
-plt.show()
+# plt.show()
 
 ufo_gb_plot = ufo_gb[ufo_gb["latitude"] > 20]
 ufo_gb_plot = ufo_gb_plot[ufo_gb_plot["longitude"] < 50]
 ufo_gb_plot.latitude = pd.to_numeric(ufo_gb_plot.latitude, errors='coerce')
 ufo_gb_plot.longitude = pd.to_numeric(ufo_gb_plot.longitude, errors='coerce')
 ufo_gb_plot.plot(kind="scatter", x="longitude", y="latitude",alpha=0.5, grid=True, title="UFO Sightings U.K.")
-plt.show()
+# plt.show()
 
 ufo_ca_plot = ufo_ca[ufo_ca["latitude"] > 49]
 ufo_ca_plot = ufo_ca_plot[ufo_ca_plot["longitude"] < -50]
