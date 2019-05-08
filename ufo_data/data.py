@@ -71,23 +71,41 @@ def replace():
 #
 #         writer.writerows(all)
 
+# with open('ufo_dates.csv','r') as csvinput:
+#     with open('ufo_dates_clean.csv', 'w') as csvoutput:
+#         writer = csv.writer(csvoutput, lineterminator='\n')
+#         reader = csv.reader(csvinput)
+#
+#         all = []
+#         row = next(reader)
+#         row.append("new mm/dd")
+#         all.append(row)
+#
+#         for row in reader:
+#             date = row[8].split("/")
+#             if int(date[1]) < 10:
+#                 date[1] = "0" + date[1]
+#             new_date = date[0] + "/" + date[1]
+#             print(new_date)
+#             row.append(new_date)
+#             all.append(row)
+#
+#         writer.writerows(all)
+
 with open('ufo_dates.csv','r') as csvinput:
-    with open('ufo_dates_clean.csv', 'w') as csvoutput:
+    with open('ufo_year.csv', 'w') as csvoutput:
         writer = csv.writer(csvoutput, lineterminator='\n')
         reader = csv.reader(csvinput)
 
         all = []
         row = next(reader)
-        row.append("new mm/dd")
+        row.append("year")
         all.append(row)
 
         for row in reader:
-            date = row[8].split("/")
-            if int(date[1]) < 10:
-                date[1] = "0" + date[1]
-            new_date = date[0] + "/" + date[1]
-            print(new_date)
-            row.append(new_date)
+            year = row[0].split(" ")[0].split("/")[2]
+            print(year)
+            row.append(year)
             all.append(row)
 
         writer.writerows(all)
