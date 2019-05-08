@@ -99,13 +99,13 @@ with open('ufo_dates.csv','r') as csvinput:
 
         all = []
         row = next(reader)
-        row.append("year")
+        row.append("date")
         all.append(row)
 
         for row in reader:
-            year = row[0].split(" ")[0].split("/")[2]
-            print(year)
-            row.append(year)
+            date = row[0].split(" ")[0]
+            print(date)
+            row.append(date)
             all.append(row)
 
         writer.writerows(all)
