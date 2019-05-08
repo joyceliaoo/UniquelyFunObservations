@@ -103,7 +103,12 @@ with open('ufo_dates.csv','r') as csvinput:
         all.append(row)
 
         for row in reader:
-            date = row[0].split(" ")[0]
+            old_date = row[0].split(" ")[0].split("/")
+            if int(old_date[0]) < 10:
+                old_date[0] = "0" + old_date[0]
+            if int(old_date[1]) < 10:
+                old_date[1] = "0" + old_date[1]
+            date = "/".join(old_date)
             print(date)
             row.append(date)
             all.append(row)
