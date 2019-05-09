@@ -1,1 +1,1 @@
-# Team UFOs (Uniquely Fun Observations) !
+# Team UFOs (Uniquely Fun Observations)
